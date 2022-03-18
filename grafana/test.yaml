@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bibo
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/deaamoflih/argocd-starboard.git
+    targetRevision: master
+    path: env
+    targetRevision: 6.24.1
+    helm:
+      chart: grafana
+      repoURL: https://grafana.github.io/helm-charts
+      releaseName: bibo
+      targetRevision: 6.24.1
+#      values: |
+#        replicas: 3
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: new
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
