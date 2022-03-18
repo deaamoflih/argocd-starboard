@@ -15,7 +15,9 @@ spec:
         trivy:
           ignoreUnfixed: true
         service:
-          type: NodePort  
+          type: NodePort
+        operator:
+          replicas: 4    
   destination:
     server: https://kubernetes.default.svc
     namespace: starboard-system
