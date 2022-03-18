@@ -11,6 +11,8 @@ spec:
     targetRevision: 6.24.1
     helm:
       releaseName: grafana
+      values: |
+        replicas: 3
   destination:
     server: https://kubernetes.default.svc
     namespace: dev
