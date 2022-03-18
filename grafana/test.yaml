@@ -9,7 +9,6 @@ spec:
     repoURL: https://github.com/deaamoflih/argocd-starboard.git
     targetRevision: main
     path: env
-    targetRevision: 6.24.1
     helm:
       chart: grafana
       repoURL: https://grafana.github.io/helm-charts
