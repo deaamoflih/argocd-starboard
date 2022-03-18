@@ -10,6 +10,7 @@ spec:
     repoURL: https://aquasecurity.github.io/helm-charts/
     targetRevision: 0.9.1
     helm:
+      releaseName: ghost
       values: |
         targetNamespaces: app
         trivy:
