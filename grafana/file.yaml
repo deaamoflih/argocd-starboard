@@ -2,13 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: grafana
-  namespace: argocd
+  namespace: default
 spec:
   project: default
   source:
     repoURL: https://grafana.github.io/helm-charts
     chart: grafana
-    targetRevision: 6.24.1
+    targetRevision: 6.24.2
     helm:
       releaseName: grafana
       values: |

@@ -1,26 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bibo
-  namespace: argocd
+  name: myapp-dit
 spec:
   project: default
   source:
-    repoURL: https://github.com/deaamoflih/argocd-starboard.git
-    targetRevision: main
-    path: env
+    repoURL: https://bitbucket.example.com/scm/foo/myapp.git
+    targetRevision: HEAD
+    path: ""
     helm:
-      repoURL: https://grafana.github.io/helm-charts
-      chart: "grafana"
-  #    releaseName: bibo
-      chartVersion: "6.24.1"
-      valueFiles:  ['values-test.yaml'] 
-#      values: |
-#        replicas: 3
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: new
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+      repoURL: https://artifactory.example.com/artifactory/helm
+      chart: "web-service"
+      chartVersion: "1.0.0"
+      valueFiles: ['values-dit.yaml'] # resolved against source.repoURL and source.path
