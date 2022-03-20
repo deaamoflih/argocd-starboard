@@ -10,12 +10,11 @@ spec:
     targetRevision: main
     path: env
     helm:
-      chart: grafana
       repoURL: https://grafana.github.io/helm-charts
-      releaseName: bibo
-      chartVersion: 6.24.1
-      valueFiles:
-      - values-test.yaml
+      chart: "grafana"
+  #    releaseName: bibo
+      chartVersion: "6.24.1"
+      valueFiles:  ['values-test.yaml'] 
 #      values: |
 #        replicas: 3
   destination:
