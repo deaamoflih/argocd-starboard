@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: grafana
+  name: helm-chart-test
   namespace: argocd
 spec:
   project: default
@@ -9,6 +9,9 @@ spec:
     repoURL: https://github.com/deaamoflih/argocd-starboard.git
     path: grafana/helmo
     targetRevision: main
+    helm:
+     valueFiles:
+      - values-dev.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: dev
