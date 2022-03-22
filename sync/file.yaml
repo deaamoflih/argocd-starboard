@@ -12,7 +12,7 @@ spec:
     helm:
       releaseName: grafana
       values: |
-        replicas: 5
+        replicas: 2
   destination:
     server: https://kubernetes.default.svc
     namespace: default
