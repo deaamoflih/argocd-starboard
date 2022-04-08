@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: git-app
+  name: git-app-2
   namespace: argocd
 spec:
   project: default
   source:
     repoURL:  https://github.com/deaamoflih/argocd-starboard.git
     targetRevision: sync
-    path: sync/aoa
+    path: sync/aoa/app2
   destination:
     server: https://kubernetes.default.svc
     namespace: default
