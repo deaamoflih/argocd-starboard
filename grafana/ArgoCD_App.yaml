@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/deaamoflih/argocd-starboard.git
-    path: grafana/helmo
+    path: grafana/helm-chart
     targetRevision: main
     helm:
      valueFiles:
