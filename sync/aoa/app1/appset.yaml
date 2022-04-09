@@ -18,6 +18,7 @@ spec:
   template:
     metadata:
       name: '{{releasename}}'
+      namespace: default
     spec:
       project: default
       source:
