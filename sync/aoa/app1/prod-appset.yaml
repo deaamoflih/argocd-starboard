@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: prod-grafana
+  name: prod-svc
   namespace: argocd
 spec:
   generators:
     - list:
         elements:
-        - releasename: grafana
+        - releasename: prod-grafana
           chart: grafana
           helmRepo: https://grafana.github.io/helm-charts
           targetRevision: 6.20.5
