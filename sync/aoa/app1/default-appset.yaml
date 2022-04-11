@@ -11,10 +11,10 @@ spec:
           chart: grafana
           helmRepo: https://grafana.github.io/helm-charts
           targetRevision: 6.20.5
-#        - releasename: devo
-#          chart: grafana
-#          helmRepo: https://grafana.github.io/helm-charts
-#          targetRevision: 6.26.0 
+        - releasename: devo
+          chart: grafana
+          helmRepo: https://grafana.github.io/helm-charts
+          targetRevision: 6.26.0 
   template:
     metadata:
       name: '{{chart}}'
