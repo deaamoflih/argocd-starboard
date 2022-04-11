@@ -33,5 +33,5 @@ spec:
         namespace: qs
       syncPolicy: 
        automated:
-         prune: true
+         prune: false
          selfHeal: false
