@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: tenant-apps
+  name: qs-grafana
   namespace: argocd
 spec:
   generators:
@@ -11,16 +11,16 @@ spec:
           chart: grafana
           helmRepo: https://grafana.github.io/helm-charts
           targetRevision: 6.20.5
-        - releasename: devo
-          chart: grafana
-          helmRepo: https://grafana.github.io/helm-charts
-          targetRevision: 6.26.0 
+#        - releasename: devo
+#          chart: grafana
+#          helmRepo: https://grafana.github.io/helm-charts
+#          targetRevision: 6.26.0 
   template:
     metadata:
       name: '{{releasename}}'
       namespace: default
     spec:
-      project: default
+      project: qs
       source:
         chart: '{{chart}}'
         repoURL: https://grafana.github.io/helm-charts
@@ -30,7 +30,7 @@ spec:
             - values.yaml
       destination:
         server: https://kubernetes.default.svc
-        namespace: default
+        namespace: qs
       syncPolicy: 
        automated:
          prune: true
