@@ -7,17 +7,17 @@ spec:
   generators:
     - list:
         elements:
-        - releasename: default-grafana
+        - releasename: grafana
           chart: grafana
           helmRepo: https://grafana.github.io/helm-charts
           targetRevision: 6.20.5
-        - releasename: devo
-          chart: grafana
-          helmRepo: https://grafana.github.io/helm-charts
-          targetRevision: 6.26.0 
+   #     - releasename: devo
+   #       chart: grafana
+   #       helmRepo: https://grafana.github.io/helm-charts
+   #       targetRevision: 6.26.0 
   template:
     metadata:
-      name: '{{chart}}'
+      name: 'd-{{releasename}}'
       namespace: default
     spec:
       project: default
@@ -35,3 +35,41 @@ spec:
        automated:
          prune: false
          selfHeal: false
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: deafult-svc2
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+        - releasename: grafana
+          chart: grafana
+          helmRepo: https://grafana.github.io/helm-charts
+          targetRevision: 6.20.5
+ #       - releasename: devo2
+ #         chart: grafana
+ #         helmRepo: https://grafana.github.io/helm-charts
+ #         targetRevision: 6.26.0 
+  template:
+    metadata:
+      name: 'p-{{releasename}}'
+      namespace: qs
+    spec:
+      project: qs
+      source:
+        chart: '{{chart}}'
+        repoURL: https://grafana.github.io/helm-charts
+        targetRevision: '{{targetRevision}}'
+        helm:
+          valueFiles:
+            - values.yaml
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: qs
+      syncPolicy: 
+       automated:
+         prune: false
+         selfHeal: false         
