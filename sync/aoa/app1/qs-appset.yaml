@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: qs-grafana
+  name: qs-svc
   namespace: argocd
 spec:
   generators:
@@ -18,7 +18,7 @@ spec:
   template:
     metadata:
       name: '{{releasename}}'
-      namespace: default
+      namespace: qs
     spec:
       project: qs
       source:
@@ -34,4 +34,4 @@ spec:
       syncPolicy: 
        automated:
          prune: true
-         selfHeal: true
+         selfHeal: false
