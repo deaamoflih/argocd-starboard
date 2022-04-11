@@ -17,7 +17,7 @@ spec:
 #          targetRevision: 6.26.0 
   template:
     metadata:
-      name: '{{releasename}}'
+      name: '{{chart}}'
       namespace: default
     spec:
       project: default
