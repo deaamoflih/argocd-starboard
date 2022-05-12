@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: helm-chart-test
+  name: hillioo
   namespace: argocd
 spec:
   project: default
@@ -11,10 +11,11 @@ spec:
     targetRevision: sync
     helm:
      valueFiles:
-      - values-dev.yaml
+      - values-prod.yaml
+     releaseName: helm-chart-test
   destination:
     server: https://kubernetes.default.svc
-    namespace: dev
+    namespace: qs
   syncPolicy:
     automated:
       prune: true
